@@ -1,0 +1,29 @@
+{
+  "name": "z-cli",
+  "version": "0.1.0",
+  "description": "The CLI for Z",
+  "bin": {
+    "z": "./bin/z.js"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangtengfei/z-cli.git"
+  },
+  "keywords": [
+    "React",
+    "RIA"
+  ],
+  "author": "htf1990@foxmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huangtengfei/z-cli/issues"
+  },
+  "homepage": "https://github.com/huangtengfei/z-cli#readme",
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
+}
