@@ -5,10 +5,10 @@ const path = require('path');
 const webpack = require('webpack');
 const getConfig = require('../config/webpack');
 
-module.exports = function* (cwd) {
+module.exports = function* (cwd, opts) {
   console.log('start building...');
-  yield fs.removeAsync(path.join(cwd, './.build'));
-  const config = getConfig(cwd, false);
+  yield fs.removeAsync(path.join(cwd, './static'));
+  const config = getConfig(cwd, false, opts);
   webpack(config, function(err, stats) {
     if (err) {
       console.log('webpack:build', err);

@@ -2,11 +2,12 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+const chalk = require('chalk');
 const getConfig = require('../config/webpack');
 
-module.exports = function(cwd) {
-  console.log('start server...');
-  const config = getConfig(cwd, true);
+module.exports = function(cwd, opts) {
+  console.log('start server and watching...');
+  const config = getConfig(cwd, true, opts);
   const compiler = webpack(config);
   const server = new WebpackDevServer(compiler, {
     hot: true,
@@ -17,5 +18,7 @@ module.exports = function(cwd) {
     },
     publicPath: '/static/'
   });
-  server.listen(8080);
+  server.listen(opts.port, () => {
+    console.log(chalk.green(`server run at http://localhost:${opts.port}`));
+  });
 };

@@ -40,16 +40,25 @@ program
 
 program
   .command('build')
-  .description('构建应用')
-  .action(() => {
-    runCmd('build');
+  .description('打包编译静态资源')
+  .option('-e --externals', '将 React、ReactDOM 添加到 externals 属性')
+  .option('-p --polyfill', '是否打包 babel-polyfill')
+  .option('-s --source-map [sourceMap]', '生成 source map 文件')
+  .option('-u --uglify', '压缩代码')
+  .action(options => {
+    runCmd('build', options);
   });
 
 program
-  .command('server')
-  .description('启动服务器')
-  .action(() => {
-    runCmd('server');
+  .command('watch')
+  .description('启动静态资源服务器并实时编译')
+  .option('-e --externals', '将 React、ReactDOM 添加到 externals 属性')
+  .option('-p --polyfill', '是否打包 babel-polyfill')
+  .option('-s --source-map [sourceMap]', '生成 source map 文件')
+  .option('-u --uglify', '压缩代码')
+  .option('-p --port [port]', '指定静态服务监听的端口号', 8080)
+  .action(options => {
+    runCmd('watch', options);
   });
 
 program.parse(process.argv);
